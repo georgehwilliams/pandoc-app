@@ -334,7 +334,7 @@ main[role="main"] {
 }
 
 /* ------------------------------------------------------------
-   Button
+   Buttons
    ------------------------------------------------------------ */
 .btn {
   display: inline-flex;
@@ -364,6 +364,26 @@ main[role="main"] {
   background-color: var(--color-primary-disabled);
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-text-subtle);
+}
+
+.button-group {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.button-group .btn {
+  flex: 1;
 }
 
 /* ------------------------------------------------------------

@@ -37,17 +37,8 @@
     ]
   },
   "plugins": {
-    "shell": {
-      "open": true
-    },
-    "dialog": {
-      "open": true,
-      "save": true
-    },
-    "fs": {
-      "scope": {
-        "allow": ["$HOME/**", "$DOCUMENT/**", "$DESKTOP/**", "$DOWNLOAD/**"]
-      }
-    }
+  "shell": {
+    "open": true
   }
+}
 }

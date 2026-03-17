@@ -27,7 +27,7 @@
             class="drop-zone"
             role="button"
             tabindex="0"
-            aria-label="Drop a file here or press Enter to browse"
+            aria-label="Drop a file here or press Return to browse"
             aria-describedby="drop-zone-hint"
           >
             <svg aria-hidden="true" focusable="false" class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -36,7 +36,7 @@
               <line x1="12" y1="3" x2="12" y2="15"/>
             </svg>
             <p class="drop-label">Drop a file here</p>
-            <p id="drop-zone-hint" class="drop-hint">or press Enter to browse</p>
+            <p id="drop-zone-hint" class="drop-hint">or press Return to browse</p>
             <input
               type="file"
               id="file-input"
@@ -76,15 +76,24 @@
             <p id="filename-hint" class="field-hint">Leave blank to use the input filename with a new extension.</p>
           </div>
 
-          <!-- Convert Button -->
-          <button
-            id="convert-btn"
-            class="btn btn-primary"
-            disabled
-            aria-describedby="convert-hint"
-          >
-            Convert
-          </button>
+          <!-- Buttons -->
+          <div class="button-group">
+            <button
+              id="convert-btn"
+              class="btn btn-primary"
+              disabled
+              aria-describedby="convert-hint"
+            >
+              Convert
+            </button>
+            <button
+              id="reset-btn"
+              class="btn btn-secondary"
+              aria-label="Reset and start over"
+            >
+              Reset
+            </button>
+          </div>
           <p id="convert-hint" class="field-hint">Select a file and output format to enable conversion.</p>
 
         </section>

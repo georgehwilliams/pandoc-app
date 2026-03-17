@@ -1,10 +1,12 @@
 // ============================================================
-// PANDOCAPP — FRONTEND LOGIC (v2)
+// PANDOCAPP — FRONTEND LOGIC (v3)
 // Uses Tauri native dialog for file selection
+// Uses Tauri window API for drag-and-drop path resolution
 // ============================================================
 
 import { invoke } from '@tauri-apps/api/core';
 import { open } from '@tauri-apps/plugin-dialog';
+import { getCurrentWindow } from '@tauri-apps/api/window';
 
 // ------------------------------------------------------------
 // State
@@ -20,6 +22,7 @@ const selectedFileDisplay = document.getElementById('selected-file');
 const outputFormat = document.getElementById('output-format');
 const outputFilename = document.getElementById('output-filename');
 const convertBtn = document.getElementById('convert-btn');
+const resetBtn = document.getElementById('reset-btn');
 const statusDisplay = document.getElementById('status-display');
 
 // ------------------------------------------------------------
@@ -130,14 +133,14 @@ async function openFileDialog() {
 dropZone.addEventListener('click', openFileDialog);
 
 dropZone.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
+  if (e.key === 'Enter' || e.key === ' ' || e.key === 'Return') {
     e.preventDefault();
     openFileDialog();
   }
 });
 
 // ------------------------------------------------------------
-// Drag and drop
+// Drag and drop — uses Tauri window API for file path access
 // ------------------------------------------------------------
 dropZone.addEventListener('dragover', (e) => {
   e.preventDefault();
@@ -148,28 +151,21 @@ dropZone.addEventListener('dragleave', () => {
   dropZone.classList.remove('drag-over');
 });
 
-dropZone.addEventListener('drop', async (e) => {
+dropZone.addEventListener('drop', (e) => {
   e.preventDefault();
   dropZone.classList.remove('drag-over');
+});
 
-  const items = e.dataTransfer.items;
-  if (items && items.length > 0) {
-    for (const item of items) {
-      if (item.kind === 'file') {
-        const entry = await item.getAsFileSystemHandle();
-        if (entry && entry.kind === 'file') {
-          // Use Tauri's path resolution for dropped files
-          const file = await entry.getFile();
-          // Tauri patches File to include path
-          if (file.path) {
-            handleFilePath(file.path);
-          } else {
-            // Fallback: prompt user to use the dialog
-            setStatus('Could not read dropped file path. Please use click-to-browse instead.', 'error');
-          }
-          break;
-        }
-      }
+getCurrentWindow().onDragDropEvent((event) => {
+  if (event.payload.type === 'over') {
+    dropZone.classList.add('drag-over');
+  } else if (event.payload.type === 'cancelled') {
+    dropZone.classList.remove('drag-over');
+  } else if (event.payload.type === 'drop') {
+    dropZone.classList.remove('drag-over');
+    const paths = event.payload.paths;
+    if (paths && paths.length > 0) {
+      handleFilePath(paths[0]);
     }
   }
 });
@@ -215,6 +211,31 @@ convertBtn.addEventListener('click', async () => {
     updateConvertButton();
   }
 });
+
+// ------------------------------------------------------------
+// Reset
+// ------------------------------------------------------------
+function resetApp() {
+  selectedFilePath = null;
+  selectedFileName = null;
+
+  selectedFileDisplay.textContent = 'No file selected';
+  selectedFileDisplay.classList.remove('has-file');
+
+  outputFormat.value = '';
+  outputFilename.value = '';
+  outputFilename.placeholder = 'Auto-generated from input filename';
+
+  const options = outputFormat.querySelectorAll('option[value]');
+  options.forEach(option => {
+    option.disabled = false;
+  });
+
+  setStatus('Ready. Select a file to begin.', 'ready');
+  updateConvertButton();
+}
+
+resetBtn.addEventListener('click', resetApp);
 
 // ------------------------------------------------------------
 // Init
