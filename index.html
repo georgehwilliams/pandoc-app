@@ -1,13 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pandoc-app</title>
+    <title>PandocApp</title>
+    <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+      <h1>PandocApp</h1>
+      <p class="tagline">Document format converter</p>
+    </header>
+
+    <main id="main-content" role="main">
+      <div class="app-layout">
+
+        <!-- LEFT PANEL: Controls -->
+        <section class="panel panel-controls" aria-labelledby="controls-heading">
+          <h2 id="controls-heading" class="visually-hidden">Conversion controls</h2>
+
+          <!-- Drop Zone -->
+          <div
+            id="drop-zone"
+            class="drop-zone"
+            role="button"
+            tabindex="0"
+            aria-label="Drop a file here or press Enter to browse"
+            aria-describedby="drop-zone-hint"
+          >
+            <svg aria-hidden="true" focusable="false" class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <p class="drop-label">Drop a file here</p>
+            <p id="drop-zone-hint" class="drop-hint">or press Enter to browse</p>
+            <input
+              type="file"
+              id="file-input"
+              class="visually-hidden"
+              accept=".md,.markdown,.docx,.html,.htm"
+              aria-label="Choose a file to convert"
+            />
+          </div>
+
+          <!-- Selected File Display -->
+          <div id="selected-file" class="selected-file" aria-live="polite" aria-atomic="true">
+            <span class="selected-file-label">No file selected</span>
+          </div>
+
+          <!-- Output Format Selector -->
+          <div class="field-group">
+            <label for="output-format" class="field-label">Convert to</label>
+            <select id="output-format" class="format-select" aria-describedby="format-hint">
+              <option value="">— choose a format —</option>
+              <option value="docx">Word Document (.docx)</option>
+              <option value="md">Markdown (.md)</option>
+              <option value="html">HTML (.html)</option>
+            </select>
+            <p id="format-hint" class="field-hint">Output format will be validated against your input file.</p>
+          </div>
+
+          <!-- Output Location -->
+          <div class="field-group">
+            <label for="output-filename" class="field-label">Output filename</label>
+            <input
+              type="text"
+              id="output-filename"
+              class="filename-input"
+              placeholder="Auto-generated from input filename"
+              aria-describedby="filename-hint"
+            />
+            <p id="filename-hint" class="field-hint">Leave blank to use the input filename with a new extension.</p>
+          </div>
+
+          <!-- Convert Button -->
+          <button
+            id="convert-btn"
+            class="btn btn-primary"
+            disabled
+            aria-describedby="convert-hint"
+          >
+            Convert
+          </button>
+          <p id="convert-hint" class="field-hint">Select a file and output format to enable conversion.</p>
+
+        </section>
+
+        <!-- RIGHT PANEL: Status -->
+        <section class="panel panel-status" aria-labelledby="status-heading">
+          <h2 id="status-heading">Status</h2>
+
+          <div
+            id="status-display"
+            class="status-display"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <p class="status-ready">Ready. Select a file to begin.</p>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+    <footer role="contentinfo">
+      <p>PandocApp — powered by <a href="https://pandoc.org" target="_blank" rel="noopener noreferrer">Pandoc</a></p>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
