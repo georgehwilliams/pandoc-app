@@ -3,32 +3,23 @@
 > See `pandoc-plan.md` for the full development plan.
 
 ## Current Phase
-Phase 1 — Core Conversion: MD / DOCX / HTML
+Phase 2 — DOCX Template + Metadata + Frontmatter
 
 ## Completed Milestones
 - [x] Milestone 0: Tauri app scaffolded, pushed to GitHub
+- [x] Milestone 1: Core conversion (MD / DOCX / HTML), WCAG-compliant UI,
+      drag-and-drop, click/Return to browse, reset button, all six format
+      pairs tested and confirmed working
 
 ## Active Task
-Phase 1 — wiring Tauri native file dialog after resolving browser File API
-path limitation. Three plugin dependencies added: tauri-plugin-dialog,
-tauri-plugin-fs, tauri-plugin-shell.
-
-## Files Modified This Session
-- `index.html` — full semantic HTML, ARIA landmarks, two-panel layout
-- `src/style.css` — WCAG 2.2 AA, system color scheme, light/dark mode
-- `src/main.js` — frontend logic v2 (native dialog replaces browser File API)
-- `src-tauri/src/main.rs` — Pandoc command, find_pandoc(), three plugins registered
-- `src-tauri/Cargo.toml` — added tauri-plugin-dialog, tauri-plugin-fs, tauri-plugin-shell
-- `src-tauri/tauri.conf.json` — window size, CSP, plugin permissions
-- `vite.config.js` — created manually, port fixed to 1420
+Beginning Phase 2 — reference DOCX template support, metadata editor,
+YAML frontmatter control, find-and-replace panel
 
 ## Known Issues / Notes
-- Browser File API does not expose file paths in Tauri webview — resolved
-  by switching to Tauri native dialog (tauri-plugin-dialog)
-- Drag-and-drop path resolution still unconfirmed — test after current fix
-- Git identity was configured after initial commit (cosmetic, no impact)
-- Pandoc path: confirmed via `which pandoc` — find_pandoc() checks common
-  locations automatically
+- Drag-and-drop resolved via Tauri onDragDropEvent API
+- Browser File API does not expose paths — resolved via tauri-plugin-dialog
+- VS Code shows schema warning on tauri.conf.json — cosmetic only, no impact
+- Pandoc path: find_pandoc() checks common locations automatically
 
 ## Environment
 - macOS Sequoia, MacBook Air
