@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "PandocApp",
+  "productName": "Text for Everyone",
   "version": "0.1.0",
   "identifier": "com.pandocapp.dev",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "PandocApp",
+        "title": "Text for Everyone",
         "width": 1000,
         "height": 700,
         "minWidth": 640,
@@ -37,8 +37,8 @@
     ]
   },
   "plugins": {
-  "shell": {
-    "open": true
+    "shell": {
+      "open": true
+    }
   }
-}
 }

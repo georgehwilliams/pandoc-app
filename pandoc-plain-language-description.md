@@ -6,7 +6,7 @@ Anyone who works with documents — writers, teachers, researchers, administrato
 
 ### The Solution
 
-I'm building a desktop application called **PandocApp** that makes document format conversion simple, private, and accessible to anyone. You open the app, drop in a file, choose the format you want, and click Convert. That's it. The converted file appears on your computer. Nothing is sent to any server. Nothing requires a subscription. Nothing requires you to know anything about the technical tools running underneath.
+I'm building a desktop application called **Text for Everyone** that makes document format conversion simple, private, and accessible to anyone. You open the app, drop in a file, choose the format you want, and click Convert. That's it. The converted file appears on your computer. Nothing is sent to any server. Nothing requires a subscription. Nothing requires you to know anything about the technical tools running underneath.
 
 The app converts between Markdown, Microsoft Word (DOCX), HTML, and EPUB — the formats that matter most for writers, educators, and anyone who publishes content online. A core design goal is that the app itself, and the documents it produces, meet WCAG 2.2 AA accessibility standards — meaning they are designed to be usable by people who rely on screen readers, keyboard navigation, or other assistive technologies. This is unusual: no comparable tool makes accessibility a stated priority.
 

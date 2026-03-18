@@ -17,84 +17,258 @@
     <main id="main-content" role="main">
       <div class="app-layout">
 
-        <!-- LEFT PANEL: Controls -->
-        <section class="panel panel-controls" aria-labelledby="controls-heading">
-          <h2 id="controls-heading" class="visually-hidden">Conversion controls</h2>
+        <!-- LEFT PANEL: Tabbed controls -->
+        <section class="panel panel-controls" aria-label="Conversion controls">
 
-          <!-- Drop Zone -->
-          <div
-            id="drop-zone"
-            class="drop-zone"
-            role="button"
-            tabindex="0"
-            aria-label="Drop a file here or press Return to browse"
-            aria-describedby="drop-zone-hint"
-          >
-            <svg aria-hidden="true" focusable="false" class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="17 8 12 3 7 8"/>
-              <line x1="12" y1="3" x2="12" y2="15"/>
-            </svg>
-            <p class="drop-label">Drop a file here</p>
-            <p id="drop-zone-hint" class="drop-hint">or press Return to browse</p>
-            <input
-              type="file"
-              id="file-input"
-              class="visually-hidden"
-              accept=".md,.markdown,.docx,.html,.htm"
-              aria-label="Choose a file to convert"
-            />
-          </div>
-
-          <!-- Selected File Display -->
-          <div id="selected-file" class="selected-file" aria-live="polite" aria-atomic="true">
-            <span class="selected-file-label">No file selected</span>
-          </div>
-
-          <!-- Output Format Selector -->
-          <div class="field-group">
-            <label for="output-format" class="field-label">Convert to</label>
-            <select id="output-format" class="format-select" aria-describedby="format-hint">
-              <option value="">— choose a format —</option>
-              <option value="docx">Word Document (.docx)</option>
-              <option value="md">Markdown (.md)</option>
-              <option value="html">HTML (.html)</option>
-            </select>
-            <p id="format-hint" class="field-hint">Output format will be validated against your input file.</p>
-          </div>
-
-          <!-- Output Location -->
-          <div class="field-group">
-            <label for="output-filename" class="field-label">Output filename</label>
-            <input
-              type="text"
-              id="output-filename"
-              class="filename-input"
-              placeholder="Auto-generated from input filename"
-              aria-describedby="filename-hint"
-            />
-            <p id="filename-hint" class="field-hint">Leave blank to use the input filename with a new extension.</p>
-          </div>
-
-          <!-- Buttons -->
-          <div class="button-group">
+          <!-- Tab List -->
+          <div class="tab-list" role="tablist" aria-label="Control panels">
             <button
-              id="convert-btn"
-              class="btn btn-primary"
-              disabled
-              aria-describedby="convert-hint"
+              id="tab-convert"
+              class="tab-btn tab-btn--active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="tabpanel-convert"
             >
               Convert
             </button>
             <button
-              id="reset-btn"
-              class="btn btn-secondary"
-              aria-label="Reset and start over"
+              id="tab-options"
+              class="tab-btn"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tabpanel-options"
+              tabindex="-1"
             >
-              Reset
+              Options
             </button>
           </div>
-          <p id="convert-hint" class="field-hint">Select a file and output format to enable conversion.</p>
+
+          <!-- Convert Tab Panel -->
+          <div
+            id="tabpanel-convert"
+            class="tab-panel"
+            role="tabpanel"
+            aria-labelledby="tab-convert"
+          >
+
+            <!-- Drop Zone -->
+            <div
+              id="drop-zone"
+              class="drop-zone"
+              role="button"
+              tabindex="0"
+              aria-label="Drop a file here or press Return to browse"
+              aria-describedby="drop-zone-hint"
+            >
+              <svg aria-hidden="true" focusable="false" class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <p class="drop-label">Drop a file here</p>
+              <p id="drop-zone-hint" class="drop-hint">or press Return to browse</p>
+              <input
+                type="file"
+                id="file-input"
+                class="visually-hidden"
+                accept=".md,.markdown,.docx,.html,.htm"
+                aria-label="Choose a file to convert"
+              />
+            </div>
+
+            <!-- Selected File Display -->
+            <div id="selected-file" class="selected-file" aria-live="polite" aria-atomic="true">
+              <span>No file selected</span>
+            </div>
+
+            <!-- Output Format Selector -->
+            <div class="field-group">
+              <label for="output-format" class="field-label">Convert to</label>
+              <select id="output-format" class="format-select" aria-describedby="format-hint">
+                <option value="">— choose a format —</option>
+                <option value="docx">Word Document (.docx)</option>
+                <option value="md">Markdown (.md)</option>
+                <option value="html">HTML (.html)</option>
+              </select>
+              <p id="format-hint" class="field-hint">Output format will be validated against your input file.</p>
+            </div>
+
+            <!-- Output Filename -->
+            <div class="field-group">
+              <label for="output-filename" class="field-label">Output filename</label>
+              <input
+                type="text"
+                id="output-filename"
+                class="filename-input"
+                placeholder="Auto-generated from input filename"
+                aria-describedby="filename-hint"
+              />
+              <p id="filename-hint" class="field-hint">Leave blank to use the input filename with a new extension.</p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+              <button
+                id="convert-btn"
+                class="btn btn-primary"
+                disabled
+                aria-describedby="convert-hint"
+              >
+                Convert
+              </button>
+              <button
+                id="reset-btn"
+                class="btn btn-secondary"
+                aria-label="Reset and start over"
+              >
+                Reset
+              </button>
+            </div>
+            <p id="convert-hint" class="field-hint">Select a file and output format to enable conversion.</p>
+
+          </div>
+          <!-- /tabpanel-convert -->
+
+          <!-- Options Tab Panel -->
+          <div
+            id="tabpanel-options"
+            class="tab-panel tab-panel--hidden"
+            role="tabpanel"
+            aria-labelledby="tab-options"
+          >
+
+            <!-- Reference DOCX Template -->
+            <fieldset class="options-fieldset">
+              <legend class="options-legend">Reference DOCX Template</legend>
+              <p class="field-hint">Applied to all Word Document (.docx) output.</p>
+
+              <div id="template-display" class="template-display" aria-live="polite">
+                <span id="template-filename" class="template-filename">No template selected</span>
+              </div>
+
+              <div class="template-controls">
+                <button id="template-pick-btn" class="btn btn-secondary btn-sm">
+                  Choose Template…
+                </button>
+                <button id="template-clear-btn" class="btn btn-secondary btn-sm" disabled>
+                  Clear
+                </button>
+              </div>
+
+              <div class="field-group field-group--inline">
+                <input
+                  type="checkbox"
+                  id="template-enabled"
+                  class="checkbox-input"
+                  checked
+                  disabled
+                  aria-describedby="template-enabled-hint"
+                />
+                <label for="template-enabled" class="field-label field-label--inline">
+                  Use template for DOCX output
+                </label>
+              </div>
+              <p id="template-enabled-hint" class="field-hint">Select a template to enable this option.</p>
+            </fieldset>
+
+            <!-- Metadata Editor -->
+            <fieldset class="options-fieldset">
+              <legend class="options-legend">
+                <button
+                  class="collapsible-trigger"
+                  aria-expanded="true"
+                  aria-controls="metadata-panel"
+                  id="metadata-trigger"
+                >
+                  <span>Metadata</span>
+                  <span class="collapsible-icon" aria-hidden="true">▾</span>
+                </button>
+              </legend>
+
+              <div id="metadata-panel" class="collapsible-panel">
+                <p class="field-hint">Passed to Pandoc for DOCX, HTML, and EPUB output.</p>
+
+                <div class="field-group field-group--inline">
+                  <input
+                    type="checkbox"
+                    id="include-title-block"
+                    class="checkbox-input"
+                    aria-describedby="title-block-hint"
+                  />
+                  <label for="include-title-block" class="field-label field-label--inline">
+                    Include title block in document body
+                  </label>
+                </div>
+                <p id="title-block-hint" class="field-hint">When checked, title and author appear as visible content at the top of the output document.</p>
+
+                <div class="field-group">
+                  <label for="meta-title" class="field-label">Title</label>
+                  <input type="text" id="meta-title" class="filename-input" placeholder="Document title" />
+                </div>
+
+                <div class="field-group">
+                  <label for="meta-author" class="field-label">Author</label>
+                  <input type="text" id="meta-author" class="filename-input" placeholder="Author name" />
+                </div>
+
+                <div class="field-group">
+                  <label for="meta-language" class="field-label">Language</label>
+                  <input
+                    type="text"
+                    id="meta-language"
+                    class="filename-input"
+                    placeholder="e.g. en, fr, de"
+                    aria-describedby="lang-hint"
+                  />
+                  <p id="lang-hint" class="field-hint">BCP 47 language tag. Always applied as a document property.</p>
+                </div>
+
+                <!-- YAML Frontmatter controls (shown when MD is involved) -->
+                <div id="frontmatter-controls" class="frontmatter-controls" hidden>
+                  <div class="field-group field-group--inline">
+                    <input type="checkbox" id="strip-frontmatter" class="checkbox-input" />
+                    <label for="strip-frontmatter" class="field-label field-label--inline">Strip YAML frontmatter from input</label>
+                  </div>
+                  <div class="field-group field-group--inline">
+                    <input type="checkbox" id="inject-frontmatter" class="checkbox-input" />
+                    <label for="inject-frontmatter" class="field-label field-label--inline">Inject YAML frontmatter into output</label>
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+
+            <!-- Find and Replace -->
+            <fieldset class="options-fieldset">
+              <legend class="options-legend">
+                <button
+                  class="collapsible-trigger"
+                  aria-expanded="false"
+                  aria-controls="findreplace-panel"
+                  id="findreplace-trigger"
+                >
+                  <span>Find &amp; Replace</span>
+                  <span class="collapsible-icon" aria-hidden="true">▸</span>
+                </button>
+              </legend>
+
+              <div id="findreplace-panel" class="collapsible-panel collapsible-panel--hidden">
+                <p class="field-hint">Applied to source content before conversion.</p>
+
+                <div class="field-group">
+                  <label for="find-text" class="field-label">Find</label>
+                  <input type="text" id="find-text" class="filename-input" placeholder="Text to find" />
+                </div>
+
+                <div class="field-group">
+                  <label for="replace-text" class="field-label">Replace with</label>
+                  <input type="text" id="replace-text" class="filename-input" placeholder="Replacement text" />
+                </div>
+              </div>
+            </fieldset>
+
+          </div>
+          <!-- /tabpanel-options -->
 
         </section>
 

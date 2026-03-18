@@ -1,8 +1,8 @@
-# PandocApp — Development Plan
+# Text for Everyone — Development Plan
 
 ## What This App Does
 
-PandocApp is a cross-platform desktop application (macOS and Windows) that converts documents between common formats: Markdown, DOCX, HTML, and EPUB. You drag a file in (or paste a URL), choose an output format, and the app produces a converted file on your local drive. The interface is WCAG 2.2 AA compliant, and HTML output meets the same accessibility standard. The app is built on Pandoc, a best-in-class command-line conversion engine, wrapped in a clean, accessible desktop UI.
+Text for Everyone is a cross-platform desktop application (macOS and Windows) that converts documents between common formats: Markdown, DOCX, HTML, and EPUB. You drag a file in (or paste a URL), choose an output format, and the app produces a converted file on your local drive. The interface is WCAG 2.2 AA compliant, and HTML output meets the same accessibility standard. The app is built on Pandoc, a best-in-class command-line conversion engine, wrapped in a clean, accessible desktop UI.
 
 Later phases add batch conversion, EPUB output, web import (URL to Markdown), PDF export, Braille export, TEI XML support, and citation/bibliography processing.
 
@@ -26,7 +26,7 @@ Later phases add batch conversion, EPUB output, web import (URL to Markdown), PD
 | Dependency | Purpose | Notes |
 |---|---|---|
 | Pandoc | All conversions | Must be on system PATH or bundled |
-| readability-lxml (Python) or @mozilla/readability (Node) | Web import / URL cleaning | Phase 3 |
+| readability-lxml (Python) or @mozilla/readability (Node) | Web import / URL cleaning | Phase 4 |
 | wkhtmltopdf or LaTeX | PDF export | Stretch Goal 1 |
 | liblouis | Braille export | Stretch Goal 2 |
 | Saxon / XSLT processor | TEI XML | Stretch Goal 3 |

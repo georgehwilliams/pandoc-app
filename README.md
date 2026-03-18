@@ -1,4 +1,4 @@
-# PandocApp
+# Text for Everyone
 
 A cross-platform desktop application for converting documents between
 Markdown, DOCX, HTML, and EPUB using Pandoc.
@@ -9,7 +9,7 @@ Built with Tauri, Vite, and Vanilla JS.
 
 ## About This Project
 
-PandocApp is an experiment in human-AI collaboration. I am a humanities
+Text for Everyone is an experiment in human-AI collaboration. I am a humanities
 professor — not a software developer — building this application with the
 assistance of Claude AI (Anthropic) through a process sometimes called
 "vibe coding": describing what I want in plain language and working
@@ -23,7 +23,7 @@ domain expertise with AI assistance.
 
 ## What It Does
 
-PandocApp wraps [Pandoc](https://pandoc.org), a best-in-class
+Text for Everyone wraps [Pandoc](https://pandoc.org), a best-in-class
 command-line document conversion engine, in a clean, accessible desktop
 interface. You select a file, choose an output format, and click Convert.
 No command line required.
@@ -67,40 +67,39 @@ If you encounter an accessibility barrier, please open an issue.
 
 ---
 
-## How PandocApp Is Different
+## How Text for Everyone Is Different
 
 Several Pandoc GUI wrappers and document converters already exist. Here
-is how PandocApp differs from the most common alternatives.
+is how Text for Everyone differs from the most common alternatives.
 
 **Compared to other Pandoc GUIs (PanWriter, PanConvert, Pandoc.app):**
 PanWriter is an editor first — you open a file, edit it, then export.
-PandocApp is a converter first: drop a file in, get a converted file out,
-no editing required. PanConvert is dated, unmaintained, and has a fragile
-dependency stack. Pandoc.app is macOS-only and minimal. PandocApp targets
-both macOS and Windows from the ground up and is designed for users who
-have no interest in the command line.
+Text for Everyone is a converter first: drop a file in, get a converted
+file out, no editing required. PanConvert is dated, unmaintained, and has
+a fragile dependency stack. Pandoc.app is macOS-only and minimal. Text for
+Everyone targets both macOS and Windows from the ground up and is designed
+for users who have no interest in the command line.
 
 **Compared to Mac App Store converters:**
 The most popular App Store converters (The Document Converter, File
 Converter) send your files to remote servers for processing, raising
-privacy concerns. PandocApp converts everything locally — your files
-never leave your machine. Several App Store options are also unmaintained,
-have undisclosed privacy practices, or hide behind paywalls after a
-limited free tier.
+privacy concerns. Text for Everyone converts everything locally — your
+files never leave your machine. Several App Store options are also
+unmaintained, have undisclosed privacy practices, or hide behind paywalls
+after a limited free tier.
 
 **Accessibility:**
 No existing Pandoc GUI — and none of the App Store converters surveyed —
-makes WCAG compliance a stated design goal. PandocApp does, for both the
-application interface and its HTML output. This makes it the only
+makes WCAG compliance a stated design goal. Text for Everyone does, for
+both the application interface and its HTML output. This makes it the only
 document converter in this space designed from the start to be usable by
 people who rely on assistive technology.
 
 **Transparency:**
-PandocApp is open source (GPL-3.0), built by a non-developer using AI
-assistance, and developed entirely in public on GitHub. The development
+Text for Everyone is open source (GPL-3.0), built by a non-developer using
+AI assistance, and developed entirely in public on GitHub. The development
 plan, status, and decision log are versioned alongside the code. There
-are no ads, no subscriptions, no telemetry, and no server-side
-processing.
+are no ads, no subscriptions, no telemetry, and no server-side processing.
 
 ---
 
@@ -122,7 +121,7 @@ This project is under active development. See
 [`pandoc-status.md`](./pandoc-status.md) for the current state and
 [`pandoc-plan.md`](./pandoc-plan.md) for the full development roadmap.
 
-**Current phase:** Phase 1 — Core conversion (MD / DOCX / HTML)
+**Current phase:** Phase 2 — DOCX Template + Metadata + Frontmatter
 
 ---
 
