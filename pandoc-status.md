@@ -39,8 +39,16 @@ PandaPort (clear but weak)
 
 ## Naming Decision
 
-Deferred to after Milestone 3. Renaming affects: app title bar,
-README, GitHub repo, tauri.conf.json identifier, all documentation.
+Deferred to after Milestone 3. Renaming affects: app title bar, README, GitHub repo, tauri.conf.json identifier, all documentation.
+
+## Known Limitations
+
+- **HTML→MD: images inside hyperlinks** — When an HTML file contains
+  an image wrapped in an `<a>` tag, Pandoc outputs raw HTML rather than
+  Markdown image syntax. The image and media folder are correctly
+  generated and the path is correct, but iA Writer does not render
+  inline HTML in Markdown previews. VS Code, Marked 2, and most other
+  Markdown renderers handle it correctly. Fix deferred.
 
 ## Known Issues / Notes
 - Drag-and-drop resolved via Tauri onDragDropEvent API
