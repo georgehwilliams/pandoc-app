@@ -15,6 +15,33 @@ Phase 2 — DOCX Template + Metadata + Frontmatter
 Beginning Phase 2 — reference DOCX template support, metadata editor,
 YAML frontmatter control, find-and-replace panel
 
+## Name Candidates
+
+All names below have been researched and verified clear of conflicts
+unless marked otherwise.
+
+**Panda-themed**
+- PandaFlux
+- PandaMorph
+- PandaShift
+- PandaPort
+
+**Mission / accessibility-forward**
+- Text for All
+- Text for Everyone
+- Docs for All
+- Docs for Everyone
+
+**Eliminated (taken)**
+PandaPress, PandaFlow, PandaCraft, PandaBox, PandaType, TextCraft,
+TextForge, TextMorph, WordHerder, DocuBox, Lumen, PandaForge,
+PandaPort (clear but weak)
+
+## Naming Decision
+
+Deferred to after Milestone 3. Renaming affects: app title bar,
+README, GitHub repo, tauri.conf.json identifier, all documentation.
+
 ## Known Issues / Notes
 - Drag-and-drop resolved via Tauri onDragDropEvent API
 - Browser File API does not expose paths — resolved via tauri-plugin-dialog
